@@ -68,7 +68,7 @@ const TourCard = ({tour}) => {
                 </Typography>
               </Box>
               <Box>
-                <Button onClick={() => (navigate(`/${tour.id}`))}>Read More</Button>
+                <Button onClick={() => (navigate(`/${tour.id}`))}>View Details</Button>
               </Box>
           </Box>
           
