@@ -2,9 +2,11 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box'
-import { AccessTime  } from "@mui/icons-material";
+import { AccessTime, ReadMore  } from "@mui/icons-material";
 import Rating from '@mui/material/Rating';
-import {createTheme, ThemeProvider} from "@mui/material"
+import {Button, createTheme, ThemeProvider} from "@mui/material"
+import { Navigate, useNavigate } from 'react-router-dom';
+
 
 const theme = createTheme({
   components: {
@@ -33,6 +35,8 @@ const theme = createTheme({
 })
 
 const TourCard = ({tour}) => {
+    const navigate = useNavigate();
+
     return(
       <Grid item xs={3}>
         <ThemeProvider theme={theme}>
@@ -44,10 +48,10 @@ const TourCard = ({tour}) => {
               </Typography>
               <Box className="flex items-center">
                 <AccessTime sx={{width: 12.5}}/>                
-                <Typography variant='body2' marginLeft={0.5}>{tour.duration}</Typography>
+                <Typography variant='body2' marginLeft={0.5}>{tour.duration} hours</Typography>
               </Box>
               <Box className="flex items-center mt-3">
-                  <Rating name="read-only" value={4.5} precision={0.5} readOnly size='small'>
+                  <Rating name="read-only" value={tour.rating} precision={0.5} readOnly size='small'>
                   </Rating>
                   <Typography variant='body2' component="p" marginLeft={0.5}>
                     {tour.rating}
@@ -60,8 +64,11 @@ const TourCard = ({tour}) => {
               </Box>
               <Box>
                 <Typography variant='h6' component="h3" marginTop={0}>
-                  From $124
+                  From ${tour.price}
                 </Typography>
+              </Box>
+              <Box>
+                <Button onClick={() => (navigate(`/${tour.id}`))}>Read More</Button>
               </Box>
           </Box>
           
