@@ -6,8 +6,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function ButtonAppBar() {
+  const navigate = useNavigate()
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -21,9 +24,13 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            MyTour.com
+          
+          <Typography className='cursor-pointer' onClick={() => (navigate("/"))} variant="h6" component="div" sx={{ flexGrow: 1 }}>
+       
+              MyTour.com
+
           </Typography>
+
           <Button color="inherit">Signup</Button>
           <Button color="inherit" className='ml-2'>Login</Button>
         </Toolbar>
