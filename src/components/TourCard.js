@@ -32,28 +32,30 @@ const theme = createTheme({
   }
 })
 
-const TourCard = () => {
+const TourCard = ({tour}) => {
     return(
       <Grid item xs={3}>
         <ThemeProvider theme={theme}>
         <Paper elevation={3}  >
-          <img className='w-full h-20' src='https://images.unsplash.com/photo-1566022357960-7cc01956a37f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80' />
+          <img className='w-full h-20' src={tour.image} />
           <Box className="px-3" >
               <Typography variant='subtitle1'>
-                  Immerse Into the Falls
+                {tour.name}
               </Typography>
               <Box className="flex items-center">
                 <AccessTime sx={{width: 12.5}}/>                
-                <Typography variant='body2' marginLeft={0.5}>5 hours</Typography>
+                <Typography variant='body2' marginLeft={0.5}>{tour.duration}</Typography>
               </Box>
               <Box className="flex items-center mt-3">
                   <Rating name="read-only" value={4.5} precision={0.5} readOnly size='small'>
                   </Rating>
                   <Typography variant='body2' component="p" marginLeft={0.5}>
-                    4.5
+                    {tour.rating}
                   </Typography>                   
                   <Typography variant='body3' component="p" marginLeft={1.5}>
-                    (655 reviews )
+                    {
+                      `(${tour.numberOfReviews} reviews) `
+                    }
                   </Typography>     
               </Box>
               <Box>
